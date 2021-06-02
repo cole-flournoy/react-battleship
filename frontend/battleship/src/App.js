@@ -1,10 +1,10 @@
-import './App.css';
+import Grid from './Grid'
 
 function App() {
-  return (
-    <div>
-      
-    </div>
+    return (
+    <>
+      <Grid/>
+    </>
   );
 }
 
