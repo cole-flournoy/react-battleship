@@ -7,7 +7,8 @@ export default class Cell extends Component {
     super(props);
     this.state = {
       cellColor: "lightblue",
-      clicked: false
+      clicked: false,
+      position: props.position
     }
   }
   
@@ -29,7 +30,7 @@ export default class Cell extends Component {
     }
 
     // console.log(this.props.lett, this.props.num, this.state.clicked)
-    return <div onClick={this.handleClick} style={styles}>{this.props.lett}{this.props.num}</div>
+    return <div onClick={this.handleClick} style={styles}>{this.props.lett} {this.state.position} </div>
   }
 
 }

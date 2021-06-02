@@ -11,16 +11,16 @@ export default class Grid extends Component {
     }
     return(
       <div style={styles}>
-        <Row lett="A"/>
-        <Row lett="B"/>
-        <Row lett="C"/>
-        <Row lett="D"/>
-        <Row lett="E"/>
-        <Row lett="F"/>
-        <Row lett="G"/>
-        <Row lett="H"/>
-        <Row lett="I"/>
-        <Row lett="J"/>
+        <Row lett="A" rowNum={0}/>
+        <Row lett="B" rowNum={10}/>
+        <Row lett="C" rowNum={20}/>
+        <Row lett="D" rowNum={30}/>
+        <Row lett="E" rowNum={40}/>
+        <Row lett="F" rowNum={50}/>
+        <Row lett="G" rowNum={60}/>
+        <Row lett="H" rowNum={70}/>
+        <Row lett="I" rowNum={80}/>
+        <Row lett="J" rowNum={90}/>
       </div>
     )
   }
