@@ -6,7 +6,8 @@ export default class Grid extends Component {
   render(){
     const styles = {
       margin: "auto",
-      width: "75%"
+      width: "75%",
+      paddingTop: "50px"
     }
     return(
       <div style={styles}>

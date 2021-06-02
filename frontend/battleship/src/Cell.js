@@ -2,16 +2,34 @@ import React, {Component} from 'react'
 
 
 export default class Cell extends Component {
-
-  render(){
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+      cellColor: "lightblue",
+      clicked: false
+    }
+  }
+  
+  handleClick = () => {
+    if (this.state.cellColor === "lightblue"){
+      this.setState({cellColor: "lightgrey", clicked: true})
+    } else if (this.state.cellColor === "lightgrey"){
+      this.setState({cellColor: "lightblue", clicked: false})
+    }
+  } 
+  
+  render() {
     const styles = {
-      backgroundColor: "lightblue",
+      backgroundColor: this.state.cellColor,
       display: "inline-block",
       border: "solid",
       width: "50px",
       height: "50px"
     }
-    return <div style={styles}>{this.props.lett}{this.props.num}</div>
+
+    // console.log(this.props.lett, this.props.num, this.state.clicked)
+    return <div onClick={this.handleClick} style={styles}>{this.props.lett}{this.props.num}</div>
   }
 
 }
