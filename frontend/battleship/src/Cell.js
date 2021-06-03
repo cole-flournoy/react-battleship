@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
 
 
-export default class Cell extends Component {
+class Cell extends Component {
   
   constructor(props) {
     super(props);
@@ -15,8 +16,10 @@ export default class Cell extends Component {
   handleClick = () => {
     if (this.state.cellColor === "lightblue"){
       this.setState({cellColor: "lightgrey", clicked: true})
+      this.props.addMyShip(this.props.position)
     } else if (this.state.cellColor === "lightgrey"){
       this.setState({cellColor: "lightblue", clicked: false})
+      this.props.removeMyShip(this.props.position)
     }
   } 
   
@@ -32,5 +35,13 @@ export default class Cell extends Component {
     // console.log(this.props.lett, this.props.num, this.state.clicked)
     return <div onClick={this.handleClick} style={styles}>{this.props.lett} {this.state.position} </div>
   }
-
 }
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addMyShip: (position) => dispatch({type: "ADD_MYSHIP", payload: position}),
+    removeMyShip: (position) => dispatch({type: "REMOVE_MYSHIP", payload: position})
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Cell)

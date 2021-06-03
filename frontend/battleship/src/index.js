@@ -5,14 +5,17 @@ import App from './App';
 import {createStore} from 'redux'
 import reducer from './reducer'
 import {composeWithDevTools} from 'redux-devtools-extension' 
+import {Provider} from 'react-redux'
 
-const initState = {}
+const initState = {myShips: []}
 const store = createStore(reducer, initState, composeWithDevTools())
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
