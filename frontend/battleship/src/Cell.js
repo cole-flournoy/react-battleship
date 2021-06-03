@@ -26,7 +26,11 @@ class Cell extends Component {
       }
 
     } else {
-      
+      if (this.props.compShips && this.props.compShips.find(p => p === this.props.position)){
+        this.setState({cellColor: "red"})
+      } else {
+        this.setState({cellColor: "white"})
+      }
     }
   
   } 
@@ -38,6 +42,7 @@ class Cell extends Component {
       return "lightblue"
     }
   }
+  
   
   render() {
 
@@ -54,7 +59,10 @@ class Cell extends Component {
 }
 
 function mapStateToprops(state){
-  return {myShips: state.myShips}
+  return {
+    myShips: state.myShips,
+    compShips: state.compShips
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {
