@@ -1,10 +1,9 @@
-import Grid from './Grid'
+import Game from './Game'
 
 function App() {
     return (
     <>
-      <Grid/>
-      {/* <Grid/> // one for self and one for opponent*/}
+      <Game/>
     </>
   );
 }
