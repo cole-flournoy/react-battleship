@@ -7,7 +7,7 @@ import reducer from './reducer'
 import {composeWithDevTools} from 'redux-devtools-extension' 
 import {Provider} from 'react-redux'
 
-const initState = {myShips: []}
+const initState = {myShips: [], compShips: []}
 const store = createStore(reducer, initState, composeWithDevTools())
 
 
