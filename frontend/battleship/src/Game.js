@@ -6,8 +6,10 @@ class Game extends Component {
 
 
   handleClick = () => {
+    let button = document.getElementById('compShipsButton')
+    button.remove()
     this.setComputerShips()
-    // unmount the button
+    
   }
 
   setComputerShips = () => {
@@ -189,7 +191,7 @@ class Game extends Component {
       <>
         <Grid board="player"/>
         <Grid board="computer"/>
-        <button style={{margin: "15px", padding: "20px", paddingTop: "20px", textAlign: "center"}} onClick={this.handleClick}>Set Opponent's Ships</button>
+        <button id="compShipsButton" style={{margin: "15px", padding: "20px", paddingTop: "20px", textAlign: "center"}} onClick={this.handleClick}>Set Opponent's Ships</button>
       </>
     )
   }
