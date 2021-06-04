@@ -7,7 +7,12 @@ import reducer from './reducer'
 import {composeWithDevTools} from 'redux-devtools-extension' 
 import {Provider} from 'react-redux'
 
-const initState = {myShips: [], compShips: []}
+const initState = {
+  myShips: [], 
+  compShips: [],
+  compCanGuess: Array.from(Array(100), (x, i) => i + 1),
+  compHasGuessed: [] 
+}
 const store = createStore(reducer, initState, composeWithDevTools())
 
 

@@ -3,17 +3,30 @@ export default function reducer(state, action){
     case "ADD_MYSHIP":
       return {
         myShips: [...state.myShips, action.payload], 
-        compShips: state.compShips
+        compShips: state.compShips,
+        compCanGuess: state.compCanGuess,
+        compHasGuessed: state.compHasGuessed
       }
     case "REMOVE_MYSHIP":
       return {
         myShips: state.myShips.filter(s => s !== action.payload),
-        compShips: state.compShips
+        compShips: state.compShips,
+        compCanGuess: state.compCanGuess,
+        compHasGuessed: state.compHasGuessed
       }
     case "ADD_COMP_SHIP":
       return {
         compShips: [...state.compShips, ...action.payload],
-        myShips: state.myShips
+        myShips: state.myShips,
+        compCanGuess: state.compCanGuess,
+        compHasGuessed: state.compHasGuessed
+      }
+    case "ADD_GUESS":
+      return{
+        compShips: state.compShips,
+        myShips: state.myShips,
+        compCanGuess: state.compCanGuess.filter(p => p !== action.payload),
+        compHasGuessed: [...state.compHasGuessed, action.payload]
       }
     default:
       return state

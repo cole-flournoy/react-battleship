@@ -185,6 +185,13 @@ class Game extends Component {
     }    
   }
 
+  computerGuess = () => {
+    let options = this.props.compCanGuess
+    const randomIndex = Math.floor(Math.random() * options.length)
+    const guess = options[randomIndex]
+    this.props.addGuess(guess)
+  }
+
   render(){
     return(
       <>
@@ -198,8 +205,18 @@ class Game extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addCompShip: (positionsArray) => dispatch({type: "ADD_COMP_SHIP", payload: positionsArray})
+    addCompShip: (positionsArray) => dispatch({type: "ADD_COMP_SHIP", payload: positionsArray}),
+    addGuess: (guess) => dispatch({type: "ADD_GUESS", payload: guess})
   }
 }
 
-export default connect(null, mapDispatchToProps)(Game)
+function mapStateToprops(state){
+  return {
+    myShips: state.myShips,
+    compShips: state.compShips,
+    compCanGuess: state.compCanGuess,
+    compHasGuessed: state.compHasGuessed
+  }
+}
+
+export default connect(mapStateToprops, mapDispatchToProps)(Game)
