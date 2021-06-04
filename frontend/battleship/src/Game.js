@@ -11,31 +11,50 @@ class Game extends Component {
   }
 
   setComputerShips = () => {
-    const options = Array.from(Array(100), (x, i) => i + 101)
-    // this.setCarrier()
+    let options = Array.from(Array(100), (x, i) => i + 101)
+    options = this.setCarrier(options)
+    // options = this.setBattleship(options)
+    
+    }
+
+  setCarrier = (options) => {
     const orrientation = Math.round(Math.random())
-    const randomElement = Math.floor(Math.random() * options.length)
-    const randomCell = options[randomElement]
+    const randomIndex = Math.floor(Math.random() * options.length)
+    const randomCell = options[randomIndex]
+
     if (orrientation === 0){
-      if (randomCell % 10 > 6 || randomCell % 10 === 0){
+      if (randomCell % 10 > 6 || randomCell % 10 === 0){ 
         this.props.addCompShip([randomCell, randomCell -1, randomCell -2, randomCell -3, randomCell -4])
-        // add cell, cell -1, cell-2, etc. to compShips
+        // console.log(randomCell, randomCell -1, randomCell -2, randomCell -3, randomCell -4)
+        return options.filter(e => e !== randomCell && e !== randomCell-1 && e !== randomCell-2 && e !== randomCell-3 && e !== randomCell-4)
+         
       } else if (randomCell % 10 < 7 && randomCell % 10 !== 0){
         this.props.addCompShip([randomCell, randomCell +1, randomCell +2, randomCell +3, randomCell +4])
-        // add cell, cell +1, cell+2, etc. to compShips
+        // console.log(randomCell, randomCell +1, randomCell +2, randomCell +3, randomCell +4)
+        return options.filter(e => e !== randomCell && e !== randomCell+1 && e !== randomCell+2 && e !== randomCell+3 && e !== randomCell+4)
       }
     } else if (orrientation === 1){
       if (Math.floor(randomCell / 10) > 15){
         this.props.addCompShip([randomCell, randomCell -10, randomCell -20, randomCell -30, randomCell -40])
-        // add cell, cell -10, cell-20, etc. to compShips
+        // console.log(randomCell, randomCell -10, randomCell -20, randomCell -30, randomCell -40)
+        return options.filter(e => e !== randomCell && e !== randomCell-10 && e !== randomCell-20 && e !== randomCell-30 && e !== randomCell-40)
       } else if (Math.floor(randomCell / 10) < 16){
         this.props.addCompShip([randomCell, randomCell +10, randomCell +20, randomCell +30, randomCell +40])
-        // add cell, cell +10, cell+20, etc. to compShips
+        // console.log(randomCell, randomCell +10, randomCell +20, randomCell +30, randomCell +40)
+        return options.filter(e => e !== randomCell && e !== randomCell+10 && e !== randomCell+20 && e !== randomCell+30 && e !== randomCell+40)
       }
     }
-
-
   }
+
+  // setBattleship = (options) => {
+  //   const orrientation = Math.round(Math.random())
+  //   const randomIndex = Math.floor(Math.random() * options.length)
+  //   const randomCell = options[randomIndex]
+
+  //   if (orrientation === 0){
+
+  //   }    
+  // }
 
   render(){
     return(
