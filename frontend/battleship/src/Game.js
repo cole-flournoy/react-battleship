@@ -12,16 +12,14 @@ class Game extends Component {
 
   setComputerShips = () => {
     let options = Array.from(Array(100), (x, i) => i + 101)
-    // console.log(options)
     options = this.setCarrier(options)
-    // console.log(options)
     options = this.setBattleship(options)
-    // console.log(options)
     options = this.setCruiserOrSubmarine(options)
-    // console.log(options)
     options = this.setCruiserOrSubmarine(options)
+    options = this.setDestroyer(options)
     // console.log(options)
     // console.log(100 - options.length)
+
 
     }
 
@@ -109,7 +107,7 @@ class Game extends Component {
           this.props.addCompShip([randomCell, randomCell -1, randomCell -2])
           return options.filter(e => e !== randomCell && e !== randomCell-1 && e !== randomCell-2)
         } else {
-          console.log("tried")
+          // console.log("tried")
           return this.setCruiserOrSubmarine(options)
         }
       } else if (randomCell % 10 < 9 && randomCell % 10 !== 0){
@@ -117,7 +115,7 @@ class Game extends Component {
           this.props.addCompShip([randomCell, randomCell +1, randomCell +2])
           return options.filter(e => e !== randomCell && e !== randomCell+1 && e !== randomCell+2)
         } else {
-          console.log("tried")
+          // console.log("tried")
           return this.setCruiserOrSubmarine(options)
         }
       }    
@@ -127,7 +125,7 @@ class Game extends Component {
           this.props.addCompShip([randomCell, randomCell -10, randomCell -20])
           return options.filter(e => e !== randomCell && e !== randomCell-10 && e !== randomCell-20)
         } else {
-          console.log("tried")
+          // console.log("tried")
           return this.setCruiserOrSubmarine(options)
         }
       } else if (Math.floor(randomCell / 10) < 18){
@@ -135,8 +133,52 @@ class Game extends Component {
           this.props.addCompShip([randomCell, randomCell +10, randomCell +20])
           return options.filter(e => e !== randomCell && e !== randomCell+10 && e !== randomCell+20)
         } else {
-          console.log("tried")
+          // console.log("tried")
           return this.setCruiserOrSubmarine(options)
+        }
+      }
+    }    
+  }
+
+  setDestroyer = (options) => {
+    const orrientation = Math.round(Math.random())
+    const randomIndex = Math.floor(Math.random() * options.length)
+    const randomCell = options[randomIndex]
+
+    if (orrientation === 0){
+      if (randomCell % 10 !== 1){
+        if (options.filter(e => e === randomCell || e === randomCell -1).length === 2){
+          this.props.addCompShip([randomCell, randomCell -1])
+          return options.filter(e => e !== randomCell && e !== randomCell-1)
+        } else {
+          // console.log("tried")
+          return this.setDestroyer(options)
+        }
+      } else {
+        if (options.filter(e => e === randomCell || e === randomCell +1).length === 2){
+          this.props.addCompShip([randomCell, randomCell +1])
+          return options.filter(e => e !== randomCell && e !== randomCell+1)
+        } else {
+          // console.log("tried")
+          return this.setDestroyer(options)
+        }
+      }    
+    } else if (orrientation === 1){
+      if (Math.floor(randomCell / 10) !== 10){
+        if (options.filter(e => e === randomCell || e === randomCell -10).length === 2){
+          this.props.addCompShip([randomCell, randomCell -10])
+          return options.filter(e => e !== randomCell && e !== randomCell-10)
+        } else {
+          // console.log("tried")
+          return this.setDestroyer(options)
+        }
+      } else {
+        if (options.filter(e => e === randomCell || e === randomCell +10).length === 2){
+          this.props.addCompShip([randomCell, randomCell +10])
+          return options.filter(e => e !== randomCell && e !== randomCell+10)
+        } else {
+          // console.log("tried")
+          return this.setDestroyer(options)
         }
       }
     }    
