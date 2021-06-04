@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import Game from './Game'
 
 
 class Cell extends Component {
@@ -31,11 +32,25 @@ class Cell extends Component {
     } else {
       if (this.props.compShips && this.props.compShips.find(p => p === this.props.position)){
         this.setState({cellColor: "red"})
+        this.computerGuess()
       } else {
         this.setState({cellColor: "white"})
+        this.computerGuess()
       }
     }
   } 
+
+  computerGuess = () => {
+    const options = this.props.compCanGuess
+    const randomIndex = Math.floor(Math.random() * options.length)
+    const guess = options[randomIndex]
+    const cell = document.getElementById(`${guess}`) 
+    if (this.props.myShips.find(e => e === guess)){
+      cell.style.backgroundColor = "red"
+    } else {
+      cell.style.backgroundColor = "white"
+    }
+  }
 
   setColor = () => {
     if (this.props.position > 100){
@@ -44,7 +59,6 @@ class Cell extends Component {
       return "lightblue"
     }
   }
-  
   
   render() {
 
@@ -56,14 +70,16 @@ class Cell extends Component {
       height: "50px"
     }
 
-    return <div onClick={this.handleClick} style={styles}>{this.props.lett} {this.state.position} </div>
+    return <div id={this.state.position} onClick={this.handleClick} style={styles}>{this.props.lett} {this.state.position} </div>
   }
 }
 
 function mapStateToprops(state){
   return {
     myShips: state.myShips,
-    compShips: state.compShips
+    compShips: state.compShips,
+    compCanGuess: state.compCanGuess,
+    compHasGuessed: state.compHasGuessed
   }
 }
 
