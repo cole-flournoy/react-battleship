@@ -9,7 +9,6 @@ class Game extends Component {
     let button = document.getElementById('compShipsButton')
     button.remove()
     this.setComputerShips()
-    
   }
 
   setComputerShips = () => {

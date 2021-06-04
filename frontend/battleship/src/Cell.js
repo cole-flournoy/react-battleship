@@ -15,16 +15,19 @@ class Cell extends Component {
   
   handleClick = () => {
     if (this.state.position < 101){
-      if (this.state.cellColor === "lightblue"){
-        if (this.props.myShips.length < 17){
-          this.setState({cellColor: "lightgrey", clicked: true})
-          this.props.addMyShip(this.props.position)
-        }
-      } else if (this.state.cellColor === "lightgrey"){
-        this.setState({cellColor: "lightblue", clicked: false})
-        this.props.removeMyShip(this.props.position)
-      }
+      if (this.props.myShips.length === 17){
 
+      } else {
+        if (this.state.cellColor === "lightblue"){
+          if (this.props.myShips.length < 17){
+            this.setState({cellColor: "lightgrey", clicked: true})
+            this.props.addMyShip(this.props.position)
+          }
+        } else if (this.state.cellColor === "lightgrey"){
+          this.setState({cellColor: "lightblue", clicked: false})
+          this.props.removeMyShip(this.props.position)
+        }
+      }
     } else {
       if (this.props.compShips && this.props.compShips.find(p => p === this.props.position)){
         this.setState({cellColor: "red"})
@@ -32,7 +35,6 @@ class Cell extends Component {
         this.setState({cellColor: "white"})
       }
     }
-  
   } 
 
   setColor = () => {
