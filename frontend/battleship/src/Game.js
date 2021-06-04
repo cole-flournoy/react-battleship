@@ -12,16 +12,16 @@ class Game extends Component {
 
   setComputerShips = () => {
     let options = Array.from(Array(100), (x, i) => i + 101)
-    console.log(options)
+    // console.log(options)
     options = this.setCarrier(options)
-    console.log(options)
+    // console.log(options)
     options = this.setBattleship(options)
-    console.log(options)
+    // console.log(options)
     options = this.setCruiserOrSubmarine(options)
-    console.log(options)
+    // console.log(options)
     options = this.setCruiserOrSubmarine(options)
-    console.log(options)
-    console.log(100 - options.length)
+    // console.log(options)
+    // console.log(100 - options.length)
 
     }
 
@@ -65,14 +65,16 @@ class Game extends Component {
           this.props.addCompShip([randomCell, randomCell -1, randomCell -2, randomCell -3])
           return options.filter(e => e !== randomCell && e !== randomCell-1 && e !== randomCell-2 && e !== randomCell-3)
         } else {
-          this.setBattleship(options)
+          // console.log("tried")
+          return this.setBattleship(options)
         }
       } else if (randomCell % 10 < 8 && randomCell % 10 !== 0){
         if (options.filter(e => e === randomCell || e === randomCell +1 || e === randomCell +2 || e === randomCell +3).length === 4){
           this.props.addCompShip([randomCell, randomCell +1, randomCell +2, randomCell +3])
           return options.filter(e => e !== randomCell && e !== randomCell+1 && e !== randomCell+2 && e !== randomCell+3)
         } else {
-          this.setBattleship(options)
+          // console.log("tried")
+          return this.setBattleship(options)
         }
       }
     } else if (orrientation === 1){
@@ -81,14 +83,16 @@ class Game extends Component {
           this.props.addCompShip([randomCell, randomCell -10, randomCell -20, randomCell -30])
           return options.filter(e => e !== randomCell && e !== randomCell-10 && e !== randomCell-20 && e !== randomCell-30)
         } else {
-          this.setBattleship(options)
+          // console.log("tried")
+          return this.setBattleship(options)
         }
       } else if (Math.floor(randomCell / 10) < 17){
         if (options.filter(e => e === randomCell || e === randomCell +10 || e === randomCell +20 || e === randomCell +30).length === 4){
           this.props.addCompShip([randomCell, randomCell +10, randomCell +20, randomCell +30])
           return options.filter(e => e !== randomCell && e !== randomCell+10 && e !== randomCell+20 && e !== randomCell+30)
         } else {
-          this.setBattleship(options)
+          // console.log("tried")
+          return this.setBattleship(options)
         }
       }
     }    
@@ -106,7 +110,7 @@ class Game extends Component {
           return options.filter(e => e !== randomCell && e !== randomCell-1 && e !== randomCell-2)
         } else {
           console.log("tried")
-          this.setCruiserOrSubmarine(options)
+          return this.setCruiserOrSubmarine(options)
         }
       } else if (randomCell % 10 < 9 && randomCell % 10 !== 0){
         if (options.filter(e => e === randomCell || e === randomCell +1 || e === randomCell +2).length === 3){
@@ -114,7 +118,7 @@ class Game extends Component {
           return options.filter(e => e !== randomCell && e !== randomCell+1 && e !== randomCell+2)
         } else {
           console.log("tried")
-          this.setCruiserOrSubmarine(options)
+          return this.setCruiserOrSubmarine(options)
         }
       }    
     } else if (orrientation === 1){
@@ -124,7 +128,7 @@ class Game extends Component {
           return options.filter(e => e !== randomCell && e !== randomCell-10 && e !== randomCell-20)
         } else {
           console.log("tried")
-          this.setCruiserOrSubmarine(options)
+          return this.setCruiserOrSubmarine(options)
         }
       } else if (Math.floor(randomCell / 10) < 18){
         if (options.filter(e => e === randomCell || e === randomCell +10 || e === randomCell +20).length === 3){
@@ -132,7 +136,7 @@ class Game extends Component {
           return options.filter(e => e !== randomCell && e !== randomCell+10 && e !== randomCell+20)
         } else {
           console.log("tried")
-          this.setCruiserOrSubmarine(options)
+          return this.setCruiserOrSubmarine(options)
         }
       }
     }    
