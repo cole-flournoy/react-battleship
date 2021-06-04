@@ -21,6 +21,13 @@ export default function reducer(state, action){
         compCanGuess: state.compCanGuess,
         compHasGuessed: state.compHasGuessed
       }
+    case "ADD_GUESS":
+      return{
+        compShips: state.compShips,
+        myShips: state.myShips,
+        compCanGuess: state.compCanGuess.filter(p => p !== action.payload),
+        compHasGuessed: [...state.compHasGuessed, action.payload]
+      }
     default:
       return state
   }

@@ -44,7 +44,8 @@ class Cell extends Component {
     const options = this.props.compCanGuess
     const randomIndex = Math.floor(Math.random() * options.length)
     const guess = options[randomIndex]
-    const cell = document.getElementById(`${guess}`) 
+    const cell = document.getElementById(`${guess}`)
+    this.props.addGuess(guess) 
     if (this.props.myShips.find(e => e === guess)){
       cell.style.backgroundColor = "red"
     } else {
@@ -86,7 +87,8 @@ function mapStateToprops(state){
 const mapDispatchToProps = (dispatch) => {
   return {
     addMyShip: (position) => dispatch({type: "ADD_MYSHIP", payload: position}),
-    removeMyShip: (position) => dispatch({type: "REMOVE_MYSHIP", payload: position})
+    removeMyShip: (position) => dispatch({type: "REMOVE_MYSHIP", payload: position}),
+    addGuess: (guess) => dispatch({type: "ADD_GUESS", payload: guess})
   }
 }
 
