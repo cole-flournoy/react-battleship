@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import Game from './Game'
 
 
 class Cell extends Component {
