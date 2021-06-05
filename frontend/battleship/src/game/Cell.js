@@ -7,7 +7,7 @@ import {withRouter} from 'react-router-dom'
 class Cell extends Component {
   
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       cellColor: this.setColor(),
       clicked: false,

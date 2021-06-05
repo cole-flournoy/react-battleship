@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import getUsers from './actions/getUsers'
+import Users from './Users'
+import getUsers from '../actions/getUsers'
 
 class Leaderboard extends Component{
 
@@ -12,7 +13,7 @@ class Leaderboard extends Component{
      return (
       <>
         <h1>YOU'RE ON THE LEADERBOARD PAGE!</h1>
-        
+        <Users />
       </>
     )
   }
