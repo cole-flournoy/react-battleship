@@ -68,7 +68,7 @@ export default function reducer(state, action){
         compHasGuessed: state.compHasGuessed,
         myHits: state.myHits,
         compHits: state.compHits,
-        usersArray: [...state.usersArray, action.payload]
+        usersArray: [...state.usersArray, action.payload][0]
       }
     default:
       return state
