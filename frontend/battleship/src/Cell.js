@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import {isGameOver} from './Game'
 
 
 class Cell extends Component {
@@ -32,7 +33,7 @@ class Cell extends Component {
       if (this.props.compShips && this.props.compShips.find(p => p === this.props.position)){
         this.setState({cellColor: "red"})
         this.props.addMyHit(this.props.position)
-        this.isGameOver()
+        isGameOver(this)
         this.computerGuess()
       } else {
         this.setState({cellColor: "white"})
@@ -41,15 +42,15 @@ class Cell extends Component {
     }
   } 
 
-  isGameOver = () => {
-    if (this.props.compHits.length +1 === 17 ){
-      alert("GAME OVER - You Lost")
-    } else if (this.props.myHits.length +1 === 17){
-      alert("Game Over - YOU WON!")
-    }
-      // prevent further clicks
-      // or redirect away after message
-  }
+  // isGameOver = () => {
+  //   if (this.props.compHits.length +1 === 17 ){
+  //     alert("GAME OVER - You Lost")
+  //   } else if (this.props.myHits.length +1 === 17){
+  //     alert("Game Over - YOU WON!")
+  //   }
+  //     // prevent further clicks
+  //     // or redirect away after message
+  // }
 
   computerGuess = () => {
     const options = this.props.compCanGuess
@@ -60,7 +61,7 @@ class Cell extends Component {
     if (this.props.myShips.find(e => e === guess)){
       cell.style.backgroundColor = "red"
       this.props.addCompHit(guess) 
-      this.isGameOver()
+      isGameOver(this)
     } else {
       cell.style.backgroundColor = "white"
     }

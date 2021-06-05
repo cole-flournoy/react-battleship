@@ -202,4 +202,15 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
+function isGameOver(context){
+  if (context.props.compHits.length +1 === 17 ){
+    alert("GAME OVER - You Lost")
+  } else if (context.props.myHits.length +1 === 17){
+    alert("Game Over - YOU WON!")
+  }
+    // prevent further clicks
+    // or redirect away after message
+}
+
 export default connect(null, mapDispatchToProps)(Game)
+export {isGameOver}
