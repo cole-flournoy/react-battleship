@@ -11,7 +11,9 @@ const initState = {
   myShips: [], 
   compShips: [],
   compCanGuess: Array.from(Array(100), (x, i) => i + 1),
-  compHasGuessed: [] 
+  compHasGuessed: [],
+  myHits: [],
+  compHits: [] 
 }
 const store = createStore(reducer, initState, composeWithDevTools())
 

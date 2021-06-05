@@ -31,6 +31,8 @@ class Cell extends Component {
     } else {
       if (this.props.compShips && this.props.compShips.find(p => p === this.props.position)){
         this.setState({cellColor: "red"})
+        this.props.addMyHit(this.props.position)
+        this.isGameOver()
         this.computerGuess()
       } else {
         this.setState({cellColor: "white"})
@@ -38,6 +40,16 @@ class Cell extends Component {
       }
     }
   } 
+
+  isGameOver = () => {
+    if (this.props.compHits.length +1 === 17 ){
+      alert("GAME OVER - You Lost")
+    } else if (this.props.myHits.length +1 === 17){
+      alert("Game Over - YOU WON!")
+    }
+      // prevent further clicks
+      // or redirect away after message
+  }
 
   computerGuess = () => {
     const options = this.props.compCanGuess
@@ -47,6 +59,8 @@ class Cell extends Component {
     this.props.addGuess(guess) 
     if (this.props.myShips.find(e => e === guess)){
       cell.style.backgroundColor = "red"
+      this.props.addCompHit(guess) 
+      this.isGameOver()
     } else {
       cell.style.backgroundColor = "white"
     }
@@ -79,7 +93,9 @@ function mapStateToprops(state){
     myShips: state.myShips,
     compShips: state.compShips,
     compCanGuess: state.compCanGuess,
-    compHasGuessed: state.compHasGuessed
+    compHasGuessed: state.compHasGuessed,
+    myHits: state.myHits,
+    compHits: state.compHits
   }
 }
 
@@ -87,7 +103,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     addMyShip: (position) => dispatch({type: "ADD_MYSHIP", payload: position}),
     removeMyShip: (position) => dispatch({type: "REMOVE_MYSHIP", payload: position}),
-    addGuess: (guess) => dispatch({type: "ADD_GUESS", payload: guess})
+    addGuess: (guess) => dispatch({type: "ADD_GUESS", payload: guess}),
+    addMyHit: (position) => dispatch({type: "ADD_MY_HIT", payload: position}),
+    addCompHit: (position) => dispatch({type: "ADD_COMP_HIT", payload: position})
   }
 }
 
