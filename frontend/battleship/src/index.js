@@ -15,7 +15,8 @@ const initState = {
   compCanGuess: Array.from(Array(100), (x, i) => i + 1),
   compHasGuessed: [],
   myHits: [],
-  compHits: [] 
+  compHits: [],
+  usersArray: [] 
 }
 const store = createStore(reducer, initState, compose(applyMiddleware(thunk), composeWithDevTools()))
 
