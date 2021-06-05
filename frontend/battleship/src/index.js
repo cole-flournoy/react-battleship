@@ -2,11 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import {createStore} from 'redux'
+import {createStore, compose, applyMiddleware} from 'redux'
 import reducer from './reducer'
 import {composeWithDevTools} from 'redux-devtools-extension' 
 import {Provider} from 'react-redux'
 import {BrowserRouter as Router} from 'react-router-dom'
+import thunk from 'redux-thunk'
 
 const initState = {
   myShips: [], 
@@ -16,7 +17,7 @@ const initState = {
   myHits: [],
   compHits: [] 
 }
-const store = createStore(reducer, initState, composeWithDevTools())
+const store = createStore(reducer, initState, compose(applyMiddleware(thunk), composeWithDevTools()))
 
 
 ReactDOM.render(

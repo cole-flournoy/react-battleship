@@ -7,7 +7,8 @@ export default function reducer(state, action){
         compCanGuess: state.compCanGuess,
         compHasGuessed: state.compHasGuessed,
         myHits: state.myHits,
-        compHits: state.compHits
+        compHits: state.compHits,
+        usersArray: state.usersArray
       }
     case "REMOVE_MYSHIP":
       return {
@@ -16,7 +17,8 @@ export default function reducer(state, action){
         compCanGuess: state.compCanGuess,
         compHasGuessed: state.compHasGuessed,
         myHits: state.myHits,
-        compHits: state.compHits
+        compHits: state.compHits,
+        usersArray: state.usersArray
       }
     case "ADD_COMP_SHIP":
       return {
@@ -25,7 +27,8 @@ export default function reducer(state, action){
         compCanGuess: state.compCanGuess,
         compHasGuessed: state.compHasGuessed,
         myHits: state.myHits,
-        compHits: state.compHits
+        compHits: state.compHits,
+        usersArray: state.usersArray
       }
     case "ADD_GUESS":
       return{
@@ -34,7 +37,8 @@ export default function reducer(state, action){
         compCanGuess: state.compCanGuess.filter(p => p !== action.payload),
         compHasGuessed: [...state.compHasGuessed, action.payload],
         myHits: state.myHits,
-        compHits: state.compHits
+        compHits: state.compHits,
+        usersArray: state.usersArray
       }
     case "ADD_MY_HIT":
       return {
@@ -43,7 +47,8 @@ export default function reducer(state, action){
         compCanGuess: state.compCanGuess,
         compHasGuessed: state.compHasGuessed,
         myHits: [...state.myHits, action.payload],
-        compHits: state.compHits
+        compHits: state.compHits,
+        usersArray: state.usersArray
       }
     case "ADD_COMP_HIT":
       return {
@@ -52,7 +57,18 @@ export default function reducer(state, action){
         compCanGuess: state.compCanGuess,
         compHasGuessed: state.compHasGuessed,
         myHits: state.myHits,
-        compHits: [...state.compHits, action.payload]
+        compHits: [...state.compHits, action.payload],
+        usersArray: state.usersArray
+      }
+    case "GET_USERS":
+      return {
+        compShips: state.compShips,
+        myShips: state.myShips,
+        compCanGuess: state.compCanGuess,
+        compHasGuessed: state.compHasGuessed,
+        myHits: state.myHits,
+        compHits: state.compHits,
+        usersArray: [...state.usersArray, action.payload]
       }
     default:
       return state
