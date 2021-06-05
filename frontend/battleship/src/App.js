@@ -1,7 +1,7 @@
-import Game from './Game'
+import Game from './game/Game'
 import {Route} from 'react-router-dom'
 import NavBar from './NavBar'
-import Leaderboard from './Leaderboard'
+import Leaderboard from './leaderboard/Leaderboard'
 
 function App() {
     return (
