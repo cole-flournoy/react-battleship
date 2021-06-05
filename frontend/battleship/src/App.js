@@ -1,9 +1,11 @@
 import Game from './Game'
 import {Route} from 'react-router-dom'
+import NavBar from './NavBar'
 
 function App() {
     return (
     <>
+      <NavBar/>
       <Route path='/play'>
         <Game/>
       </Route>
