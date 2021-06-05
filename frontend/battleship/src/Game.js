@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import Grid from './Grid'
 import {connect} from 'react-redux'
 
+
+
 class Game extends Component {
 
 
@@ -205,11 +207,11 @@ const mapDispatchToProps = (dispatch) => {
 function isGameOver(context){
   if (context.props.compHits.length +1 === 17 ){
     alert("GAME OVER - You Lost")
+    context.props.history.push('/welcome')
   } else if (context.props.myHits.length +1 === 17){
     alert("Game Over - YOU WON!")
+    context.props.history.push('/welcome')
   }
-    // prevent further clicks
-    // or redirect away after message
 }
 
 export default connect(null, mapDispatchToProps)(Game)
