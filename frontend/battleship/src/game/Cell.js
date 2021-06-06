@@ -125,7 +125,7 @@ class Cell extends Component {
   }
 }
 
-function mapStateToprops(state){
+function mapStateToProps(state){
   return {
     myShips: state.myShips,
     compShips: state.compShips,
@@ -149,4 +149,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToprops, mapDispatchToProps)(Cell)
+export default connect(mapStateToProps, mapDispatchToProps)(Cell)
