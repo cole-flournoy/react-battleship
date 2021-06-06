@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-// import {isGameOver} from './Game'
 import {withRouter} from 'react-router-dom'
 
 
@@ -150,4 +149,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default withRouter(connect(mapStateToprops, mapDispatchToProps)(Cell))
+export default connect(mapStateToprops, mapDispatchToProps)(Cell)

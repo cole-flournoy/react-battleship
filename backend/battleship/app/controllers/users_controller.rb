@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   def index
-    # binding.pry
     render json: User.all, key_transform: :camel_lower
   end
 

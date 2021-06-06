@@ -19,10 +19,6 @@ class Game extends Component {
     options = this.setCruiserOrSubmarine(options)
     options = this.setCruiserOrSubmarine(options)
     options = this.setDestroyer(options)
-    // console.log(options)
-    // console.log(100 - options.length)
-
-
     }
 
   setCarrier = (options) => {

@@ -9,7 +9,6 @@ export default function getUsers(){
       }
     })
     .then(usersArray => {
-      // debugger
       dispatch({type: "GET_USERS", payload: usersArray})
     })
     .catch(error => alert(error))
