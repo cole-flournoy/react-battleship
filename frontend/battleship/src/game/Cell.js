@@ -122,7 +122,7 @@ class Cell extends Component {
       height: "50px"
     }
 
-    return <div id={this.state.position} onClick={this.handleClick} style={styles}>{this.props.lett} {this.state.position} </div>
+    return <div id={this.state.position} onClick={this.handleClick} style={styles}>{this.props.lett}{this.props.num}</div>
   }
 }
 

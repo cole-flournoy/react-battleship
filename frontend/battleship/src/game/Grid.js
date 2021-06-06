@@ -2,10 +2,12 @@ import Row from './Row'
 
 export default function Grid(props){
   const styles = {
-        margin: "auto",
-        width: "75%",
-        paddingTop: "50px"
-      }
+    ...props.display,
+    margin: "auto",
+    width: "75%",
+    paddingTop: "20px",
+    paddingBottom: "20px",
+  }
 
   return(
     <div style={styles}>

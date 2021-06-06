@@ -189,9 +189,11 @@ class Game extends Component {
   render(){
     return(
       <>
-        <Grid board="player"/>
-        <Grid board="computer"/>
-        <button id="compShipsButton" style={{margin: "15px", padding: "20px", paddingTop: "20px", textAlign: "center"}} onClick={this.handleClick}>Set Opponent's Ships</button>
+        <h3 style={{position: "relative", left: "275px", top: "40px"}}>MY BOARD</h3>
+        <h3 style={{position: "relative", left: "850px"}}>COMPUTER BOARD</h3>
+        <Grid board="player" display={{display: "inline-block", position: "relative", left: "50px"}}/>
+        <button id="compShipsButton" style={{margin: "15px", padding: "20px", paddingTop: "20px", textAlign: "center", position: "relative", right: "710px", top: "100px"}} onClick={this.handleClick}>Set Opponent's Ships</button>
+        <Grid board="computer" display={{position: "relative", left: "500px", bottom: "600px"}}/>
       </>
     )
   }
