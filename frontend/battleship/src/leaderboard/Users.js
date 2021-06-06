@@ -1,15 +1,40 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
 
 class Users extends Component{
 
   render(){  
+    const users = this.props.usersArray.sort((userA, userB) => {
+      if (userA.wins === userB.wins){
+        return userA.losses - userB.losses
+      } else {
+        return userB.wins - userA.wins
+      } 
+    })
+
     return (
-      <ul>
-        {/* {this.props.usersArray.map(e => e.username)} */}
-        {this.props.usersArray.map(user => <li key={user.id}><Link to={`/users/${user.id}/games`}>{user.username}</Link></li>)}
-      </ul>
+      <table style={{width: '40%', textAlign: 'center', padding: '20px', marginLeft: '20px', border: 'solid'}}>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Wins</th>
+            <th>Losses</th>
+            <th>Best Guess Efficiency</th>
+            <th>Average Guess Efficiency</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users.map(user => {
+            return (<tr>
+              <td>{user.username}</td>
+              <td>{user.wins}</td>
+              <td>{user.losses}</td>
+              <td>{user.bestEfficiency === null ? "--" : user.bestEfficiency}</td>
+              <td>{user.avgEfficiency === null ? "--" : user.avgEfficiency}</td>
+            </tr>)
+          })}
+        </tbody>
+      </table>
     )
   }
 

@@ -12,7 +12,7 @@ class Leaderboard extends Component{
   render(){
      return (
       <>
-        <h1>YOU'RE ON THE LEADERBOARD PAGE!</h1>
+        <h1>BATTLESHIP LEADERBOARD!</h1>
         <Users />
       </>
     )
