@@ -14,6 +14,7 @@ const initState = {
   compShips: [],
   compCanGuess: Array.from(Array(100), (x, i) => i + 1),
   compHasGuessed: [],
+  iHaveGuessed: [],
   myHits: [],
   compHits: [],
   usersArray: [],

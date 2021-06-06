@@ -40,6 +40,7 @@ class Cell extends Component {
         this.setState({cellColor: "white"})
         this.computerGuess()
       }
+      this.props.addMyGuess(this.props.position)
     }
   } 
 
@@ -96,6 +97,7 @@ function mapStateToprops(state){
     compShips: state.compShips,
     compCanGuess: state.compCanGuess,
     compHasGuessed: state.compHasGuessed,
+    iHaveGuessed: state.iHaveGuessed,
     myHits: state.myHits,
     compHits: state.compHits
   }
@@ -106,6 +108,7 @@ const mapDispatchToProps = (dispatch) => {
     addMyShip: (position) => dispatch({type: "ADD_MYSHIP", payload: position}),
     removeMyShip: (position) => dispatch({type: "REMOVE_MYSHIP", payload: position}),
     addGuess: (guess) => dispatch({type: "ADD_GUESS", payload: guess}),
+    addMyGuess: (guess) => dispatch({type: "ADD_MY_GUESS", payload: guess}),
     addMyHit: (position) => dispatch({type: "ADD_MY_HIT", payload: position}),
     addCompHit: (position) => dispatch({type: "ADD_COMP_HIT", payload: position})
   }
