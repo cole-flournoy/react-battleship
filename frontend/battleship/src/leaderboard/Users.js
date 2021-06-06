@@ -4,9 +4,10 @@ import {Link} from 'react-router-dom'
 
 class Users extends Component{
 
-  render(){
+  render(){  
     return (
       <ul>
+        {/* {this.props.usersArray.map(e => e.username)} */}
         {this.props.usersArray.map(user => <li key={user.id}><Link to={`/users/${user.id}/games`}>{user.username}</Link></li>)}
       </ul>
     )
