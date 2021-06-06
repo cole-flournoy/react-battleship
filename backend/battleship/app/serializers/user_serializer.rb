@@ -13,7 +13,9 @@ class UserSerializer < ActiveModel::Serializer
 
   def best_efficiency
     efficiency_array = self.object.games.collect{|game| game.accuracy}
-    efficiency_array.max
+    if efficiency_array.max
+      return (efficiency_array.max).round(1)
+    end
   end
 
   def avg_efficiency

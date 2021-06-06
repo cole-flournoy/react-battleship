@@ -29,8 +29,8 @@ class Users extends Component{
               <td>{user.username}</td>
               <td>{user.wins}</td>
               <td>{user.losses}</td>
-              <td>{user.bestEfficiency === null ? "--" : user.bestEfficiency}</td>
-              <td>{user.avgEfficiency === null ? "--" : user.avgEfficiency}</td>
+              <td>{user.bestEfficiency === null ? "--" : `${user.bestEfficiency}%`}</td>
+              <td>{user.avgEfficiency === null ? "--" : `${user.avgEfficiency}%`}</td>
             </tr>)
           })}
         </tbody>
