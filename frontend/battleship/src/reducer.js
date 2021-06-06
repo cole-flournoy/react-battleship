@@ -8,7 +8,8 @@ export default function reducer(state, action){
         compHasGuessed: state.compHasGuessed,
         myHits: state.myHits,
         compHits: state.compHits,
-        usersArray: state.usersArray
+        usersArray: state.usersArray,
+        currentUser: state.currentUser
       }
     case "REMOVE_MYSHIP":
       return {
@@ -18,7 +19,8 @@ export default function reducer(state, action){
         compHasGuessed: state.compHasGuessed,
         myHits: state.myHits,
         compHits: state.compHits,
-        usersArray: state.usersArray
+        usersArray: state.usersArray,
+        currentUser: state.currentUser
       }
     case "ADD_COMP_SHIP":
       return {
@@ -28,7 +30,8 @@ export default function reducer(state, action){
         compHasGuessed: state.compHasGuessed,
         myHits: state.myHits,
         compHits: state.compHits,
-        usersArray: state.usersArray
+        usersArray: state.usersArray,
+        currentUser: state.currentUser
       }
     case "ADD_GUESS":
       return{
@@ -38,7 +41,8 @@ export default function reducer(state, action){
         compHasGuessed: [...state.compHasGuessed, action.payload],
         myHits: state.myHits,
         compHits: state.compHits,
-        usersArray: state.usersArray
+        usersArray: state.usersArray,
+        currentUser: state.currentUser
       }
     case "ADD_MY_HIT":
       return {
@@ -48,7 +52,8 @@ export default function reducer(state, action){
         compHasGuessed: state.compHasGuessed,
         myHits: [...state.myHits, action.payload],
         compHits: state.compHits,
-        usersArray: state.usersArray
+        usersArray: state.usersArray,
+        currentUser: state.currentUser
       }
     case "ADD_COMP_HIT":
       return {
@@ -58,7 +63,8 @@ export default function reducer(state, action){
         compHasGuessed: state.compHasGuessed,
         myHits: state.myHits,
         compHits: [...state.compHits, action.payload],
-        usersArray: state.usersArray
+        usersArray: state.usersArray,
+        currentUser: state.currentUser
       }
     case "GET_USERS":
       return {
@@ -68,7 +74,19 @@ export default function reducer(state, action){
         compHasGuessed: state.compHasGuessed,
         myHits: state.myHits,
         compHits: state.compHits,
-        usersArray: action.payload
+        usersArray: action.payload,
+        currentUser: state.currentUser
+      }
+    case "SET_USER":
+      return {
+        compShips: state.compShips,
+        myShips: state.myShips,
+        compCanGuess: state.compCanGuess,
+        compHasGuessed: state.compHasGuessed,
+        myHits: state.myHits,
+        compHits: state.compHits,
+        usersArray: state.usersArray,
+        currentUser: action.payload
       }
     default:
       return state

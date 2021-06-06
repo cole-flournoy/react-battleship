@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
+import setUser from './actions/setUser'
 
-export default class UserForm extends Component{
+class UserForm extends Component{
   constructor(props){
     super(props)
     this.state = {
@@ -11,6 +12,11 @@ export default class UserForm extends Component{
 
   handleSubmit = (e) => {
     e.preventDefault()
+    if (this.state.username.length !== 0){
+      this.props.setUser(this.state.username)
+      
+      debugger
+    }
     // look up user or add new
     // find_or_create_by?
     // redirect to play game
@@ -32,16 +38,5 @@ export default class UserForm extends Component{
 
 }
 
-// function mapStateToprops(state){
-//   return {
-//     currentUser: state.currentUser
-//   }
-// }
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     addCurrentUser: (username) => dispatch({type: "ADD_CURRENT_USER", payload: username}),
-//   }
-// }
-
-// export default connect(mapStateToprops, mapDispatchToProps)(UserForm)
+export default connect(null, {setUser})(UserForm)
