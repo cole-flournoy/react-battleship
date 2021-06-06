@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import setUser from './actions/setUser'
+import {withRouter} from 'react-router-dom'
 
 class UserForm extends Component{
   constructor(props){
@@ -14,13 +15,8 @@ class UserForm extends Component{
     e.preventDefault()
     if (this.state.username.length !== 0){
       this.props.setUser(this.state.username)
-      
-      debugger
+      this.props.history.push('/play')
     }
-    // look up user or add new
-    // find_or_create_by?
-    // redirect to play game
-
   }
 
   handleChange = (e) => {
@@ -39,4 +35,4 @@ class UserForm extends Component{
 }
 
 
-export default connect(null, {setUser})(UserForm)
+export default withRouter(connect(null, {setUser})(UserForm))
