@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {isGameOver} from './Game'
+// import {isGameOver} from './Game'
 import {withRouter} from 'react-router-dom'
 
 
@@ -34,7 +34,7 @@ class Cell extends Component {
       if (this.props.compShips && this.props.compShips.find(p => p === this.props.position)){
         this.setState({cellColor: "red"})
         this.props.addMyHit(this.props.position)
-        isGameOver(this)
+        this.isGameOver()
         this.computerGuess()
       } else {
         this.setState({cellColor: "white"})
@@ -44,15 +44,50 @@ class Cell extends Component {
     }
   } 
 
-  // isGameOver = () => {
-  //   if (this.props.compHits.length +1 === 17 ){
-  //     alert("GAME OVER - You Lost")
-  //   } else if (this.props.myHits.length +1 === 17){
-  //     alert("Game Over - YOU WON!")
-  //   }
-  //     // prevent further clicks
-  //     // or redirect away after message
-  // }
+  addGame = (game) => {
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({game})
+    }
+    
+    fetch("http://localhost:3001/games", options)
+    .then(resp => {
+      if (resp.ok){
+        return resp.json()
+      } else {
+        throw new Error(resp)
+      }
+    })
+    .catch(error => alert(error))
+  }
+
+  isGameOver = () => {
+    if (this.props.compHits.length +1 === 17 || this.props.myHits.length +1 === 17){
+      if (this.props.compHits.length +1 === 17){
+        let game = {
+          win: false, 
+          accuracy: (this.props.compHits.length / this.props.compHasGuessed.length)*100,
+          user_id: this.props.currentUser.id 
+        } 
+        
+        this.addGame(game)
+        alert("GAME OVER - You Lost")
+      } else if (this.props.myHits.length +1 === 17){
+        let game = {
+          win: true, 
+          accuracy: (this.props.myHits.length / this.props.iHaveGuessed.length)*100,
+          user_id: this.props.currentUser.id 
+        }
+        this.addGame(game)
+        alert("Game Over - YOU WON!")
+      }
+      this.props.history.push('/leaderboard')
+    }
+  }
 
   computerGuess = () => {
     const options = this.props.compCanGuess
@@ -63,7 +98,7 @@ class Cell extends Component {
     if (this.props.myShips.find(e => e === guess)){
       cell.style.backgroundColor = "red"
       this.props.addCompHit(guess) 
-      isGameOver(this)
+      this.isGameOver()
     } else {
       cell.style.backgroundColor = "white"
     }
@@ -99,7 +134,8 @@ function mapStateToprops(state){
     compHasGuessed: state.compHasGuessed,
     iHaveGuessed: state.iHaveGuessed,
     myHits: state.myHits,
-    compHits: state.compHits
+    compHits: state.compHits,
+    currentUser: state.currentUser
   }
 }
 

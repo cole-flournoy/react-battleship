@@ -3,7 +3,6 @@ import Grid from './Grid'
 import {connect} from 'react-redux'
 
 
-
 class Game extends Component {
 
 
@@ -204,15 +203,51 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-function isGameOver(context){
-  if (context.props.compHits.length +1 === 17 ){
-    alert("GAME OVER - You Lost")
-    context.props.history.push('/welcome')
-  } else if (context.props.myHits.length +1 === 17){
-    alert("Game Over - YOU WON!")
-    context.props.history.push('/welcome')
-  }
-}
+// function addGame(game){
+//   const options = {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//       "Accept": "application/json"
+//     },
+//     body: JSON.stringify({game})
+//   }
+  
+//   fetch("http://localhost:3001/games", options)
+//   .then(resp => {
+//     if (resp.ok){
+//       return resp.json()
+//     } else {
+//       throw new Error(resp)
+//     }
+//   })
+//   .catch(error => alert(error))
+// }
+
+// function isGameOver(context){
+//   if (context.props.compHits.length +1 === 17 || context.props.myHits.length +1 === 17){
+//     if (context.props.compHits.length +1 === 17){
+//       let game = {
+//         win: false, 
+//         accuracy: (context.props.compHits.length / context.props.compHasGuessed.length)*100,
+//         user_id: context.props.currentUser.id 
+//       } 
+      
+//       addGame(game)
+//       alert("GAME OVER - You Lost")
+//     } else if (context.props.myHits.length +1 === 17){
+//       let game = {
+//         win: true, 
+//         accuracy: (context.props.myHits.length / context.props.iHaveGuessed.length)*100,
+//         user_id: context.props.currentUser.id 
+//       }
+//       addGame(game)
+//       alert("Game Over - YOU WON!")
+//     }
+//     debugger
+//     // context.props.history.push('/leaderboard')
+//   }
+// }
 
 export default connect(null, mapDispatchToProps)(Game)
-export {isGameOver}
+// export {isGameOver}
