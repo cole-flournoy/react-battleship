@@ -10,6 +10,7 @@ class Leaderboard extends Component{
   }
 
   render(){
+    document.body.style.backgroundColor = "white"
      return (
       <>
         <h1>BATTLESHIP LEADERBOARD!</h1>

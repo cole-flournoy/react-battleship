@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-// import {withRouter} from 'react-router-dom'
+import {withRouter} from 'react-router-dom'
 
 
 class Cell extends Component {
@@ -89,8 +89,7 @@ class Cell extends Component {
         div.style.display = ""
         div.innerText = "GAME OVER \n You WON!"
       }
-      
-      // this.props.history.push('/leaderboard')
+      setTimeout(() => this.props.history.push('/leaderboard'), 4000)
     }
   }
 
@@ -155,5 +154,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Cell)
-// withRouter()
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Cell))

@@ -8,7 +8,7 @@ class Game extends Component {
 
   handleClick = () => {
     let button = document.getElementById('compShipsButton')
-    button.remove()
+    button.style.display = "none"
     this.setComputerShips()
   }
 
