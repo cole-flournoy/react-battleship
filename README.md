@@ -1,6 +1,8 @@
 # README
 
-This is a Battleship (the kids board game) clone using React for the frontend and a Rails API (using Postgres) for the backend. Enjoy!  
+This is a Battleship (the kids board game) clone using React for the frontend and a Rails API (using Postgres) for the backend. Enjoy!
+
+If you'd like to watch the walkthrough: https://youtu.be/-H3DlUF-4CE
 
 ## Installation
 
