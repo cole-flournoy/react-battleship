@@ -24,18 +24,18 @@ After that, you're ready to play some Battleship!
 
 1. Enter a username to get started
 2. Click any square on "My Board" to start placing your ships
-  a. As with the original game, you have 5 ships to place vertically or     horizontally on your board:
+  - As with the original game, you have 5 ships to place vertically or     horizontally on your board:
     - Carrier: takes up 5 spaces
     - Battleship: takes up 4 spaces
     - Cruiser: takes up 3 spaces
     - Submarine: takes up 3 spaces
     - Destroyer: takes up 2 spaces
-  b. You can select and unselect any boxes if you want to move your ships *up until* the last ship is fully placed. After that, all ships will be locked
-  c. As of now, the placement rules for the ships is on the honor system until more checks are added
+  - You can select and unselect any boxes if you want to move your ships *up until* the last ship is fully placed. After that, all ships will be locked
+  - As of now, the placement rules for the ships is on the honor system until more checks are added
 3. Click the button at the bottom of the screen to place the computer's ships
 4. Click on any square on "Computer Board" to start making guesses
-  a. Hits will be marked with red squares and misses with white squares
-  b. As soon as you guess, the computer will make a move of it's own (which you can see reflected on "My Board")
+  - Hits will be marked with red squares and misses with white squares
+  - As soon as you guess, the computer will make a move of it's own (which you can see reflected on "My Board")
 
 
 ## Contributing
