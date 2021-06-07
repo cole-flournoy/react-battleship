@@ -31,16 +31,18 @@ class Cell extends Component {
       }
     } else {
       if (this.props.compShips.length !== 0 && this.props.myShips.length === 17){
-        if (this.props.compShips.find(p => p === this.props.position)){
-          this.setState({cellColor: "red"})
-          this.props.addMyHit(this.props.position)
-          this.isGameOver()
-          this.computerGuess()
-        } else {
-          this.setState({cellColor: "white"})
-          this.computerGuess()
+        if (this.props.iHaveGuessed.filter(p => p === this.props.position).length === 0){
+          if (this.props.compShips.find(p => p === this.props.position)){
+            this.setState({cellColor: "red"})
+            this.props.addMyHit(this.props.position)
+            this.isGameOver()
+            this.computerGuess()
+          } else {
+            this.setState({cellColor: "white"})
+            this.computerGuess()
+          }
+          this.props.addMyGuess(this.props.position)
         }
-        this.props.addMyGuess(this.props.position)
       }
     }
   } 
