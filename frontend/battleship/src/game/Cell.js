@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {withRouter} from 'react-router-dom'
+// import {withRouter} from 'react-router-dom'
 
 
 class Cell extends Component {
@@ -66,25 +66,31 @@ class Cell extends Component {
 
   isGameOver = () => {
     if (this.props.compHits.length +1 === 17 || this.props.myHits.length +1 === 17){
+      let div = document.getElementById("gameOverContainer")
       if (this.props.compHits.length +1 === 17){
         let game = {
           win: false, 
           accuracy: (this.props.compHits.length / this.props.compHasGuessed.length)*100,
-          user_id: this.props.currentUser.id 
+          user_id: this.props.currentUser.id || null
         } 
-        
-        this.addGame(game)
-        alert("GAME OVER - You Lost")
+        if (game.user_id !== null){this.addGame(game)}
+        document.body.style.backgroundColor = "orangered"
+        div.style.display = ""
+        div.innerText = "GAME OVER \n You Lost"
+
       } else if (this.props.myHits.length +1 === 17){
         let game = {
           win: true, 
           accuracy: (this.props.myHits.length / this.props.iHaveGuessed.length)*100,
-          user_id: this.props.currentUser.id 
+          user_id: this.props.currentUser.id || null
         }
-        this.addGame(game)
-        alert("Game Over - YOU WON!")
+        if (game.user_id !== null){this.addGame(game)}
+        document.body.style.backgroundColor = "green"
+        div.style.display = ""
+        div.innerText = "GAME OVER \n You WON!"
       }
-      this.props.history.push('/leaderboard')
+      
+      // this.props.history.push('/leaderboard')
     }
   }
 
@@ -150,3 +156,4 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cell)
+// withRouter()

@@ -183,12 +183,25 @@ class Game extends Component {
   }
 
   render(){
+    const gameOverStyles = {
+      display: "none", 
+      backgroundColor: "white", 
+      border: "solid", 
+      position: "relative", 
+      left: "510px", 
+      width: "200px", 
+      height: "50px", 
+      textAlign: "center",
+      fontSize: "25px", 
+      padding: "40px"
+    }
     return(
       <>
+        <strong><div id="gameOverContainer" style={gameOverStyles}></div></strong>
         <h3 style={{position: "relative", left: "275px", top: "40px"}}>MY BOARD</h3>
         <h3 style={{position: "relative", left: "850px"}}>COMPUTER BOARD</h3>
         <Grid board="player" display={{display: "inline-block", position: "relative", left: "50px"}}/>
-        <button id="compShipsButton" style={{margin: "15px", padding: "20px", paddingTop: "20px", textAlign: "center", position: "relative", right: "710px", top: "100px"}} onClick={this.handleClick}>Set Opponent's Ships</button>
+        <button id="compShipsButton" style={{margin: "15px", padding: "20px", paddingTop: "20px", textAlign: "center", position: "relative", right: "565px", top: "100px"}} onClick={this.handleClick}>Set Opponent's Ships</button>
         <Grid board="computer" display={{position: "relative", left: "500px", bottom: "600px"}}/>
       </>
     )
