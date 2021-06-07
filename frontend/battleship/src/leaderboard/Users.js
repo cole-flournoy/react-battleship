@@ -12,6 +12,7 @@ class Users extends Component{
       } 
     })
 
+    const styles = {backgroundColor: "black", color: "white"}
     return (
       <table style={{width: '40%', textAlign: 'center', padding: '20px', marginLeft: '20px', border: 'solid'}}>
         <thead>
@@ -25,7 +26,7 @@ class Users extends Component{
         </thead>
         <tbody>
           {users.map(user => {
-            return (<tr key={user.id}>
+            return (<tr key={user.id} style={user.id === this.props.currentUser.id ? styles : null}>
               <td>{user.username}</td>
               <td>{user.wins}</td>
               <td>{user.losses}</td>
@@ -41,7 +42,10 @@ class Users extends Component{
 }
 
 function mapStateToProps(state){
-  return {usersArray: state.usersArray}
+  return {
+    usersArray: state.usersArray,
+    currentUser: state.currentUser
+  }
 }
 
 export default connect(mapStateToProps)(Users)
