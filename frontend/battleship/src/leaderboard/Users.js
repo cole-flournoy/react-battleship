@@ -14,7 +14,7 @@ class Users extends Component{
 
     const styles = {backgroundColor: "black", color: "white"}
     return (
-      <table style={{width: '40%', textAlign: 'center', padding: '20px', marginLeft: '20px', border: 'solid'}}>
+      <table>
         <thead>
           <tr>
             <th>Name</th>

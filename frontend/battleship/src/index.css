@@ -11,3 +11,66 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+ #gameOverContainer { 
+  display: none;
+  position: relative;
+  left: 510px;
+  background-color: white; 
+  border: solid; 
+  width: 200px; 
+  height: 50px; 
+  text-align: center;
+  font-size: 25px; 
+  padding: 40px;
+}
+
+/* .guess{
+  position: absolute; 
+  top: 405px;
+  background-color: white;
+  width: 100px; 
+  height: 40px;  
+  padding: 30px;
+  border: solid;
+  text-align: center;
+  font-size: 25px;
+  z-index: 1;
+} 
+ 
+#compGuessContainer {
+  left: 247px;
+}
+
+#myGuessContainer {
+  left: 884px;
+} */
+
+#compShipsButton {
+  margin: 15px;
+  padding: 20px; 
+  padding-top: 20px; 
+  text-align: center; 
+  position: relative; 
+  right: 565px; 
+  top: 100px;
+}
+
+#myBoard{
+  position: relative; 
+  left: 280px; 
+  top: 40px;
+}
+
+#compBoard{
+  position: relative; 
+  left: 870px;
+}
+
+table{
+  width: 40%; 
+  text-align: center; 
+  padding: 20px;
+  margin-left: 20px;
+  border: solid;
+}

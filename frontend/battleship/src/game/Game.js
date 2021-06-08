@@ -18,7 +18,7 @@ class Game extends Component {
     options = this.setBattleship(options)
     options = this.setCruiserOrSubmarine(options)
     options = this.setCruiserOrSubmarine(options)
-    options = this.setDestroyer(options)
+    this.setDestroyer(options)
     }
 
   setCarrier = (options) => {
@@ -183,25 +183,15 @@ class Game extends Component {
   }
 
   render(){
-    const gameOverStyles = {
-      display: "none", 
-      backgroundColor: "white", 
-      border: "solid", 
-      position: "relative", 
-      left: "510px", 
-      width: "200px", 
-      height: "50px", 
-      textAlign: "center",
-      fontSize: "25px", 
-      padding: "40px"
-    }
     return(
       <>
-        <strong><div id="gameOverContainer" style={gameOverStyles}></div></strong>
-        <h3 style={{position: "relative", left: "275px", top: "40px"}}>MY BOARD</h3>
-        <h3 style={{position: "relative", left: "850px"}}>COMPUTER BOARD</h3>
+        <strong><div id="gameOverContainer"></div></strong>
+        {/* <div className="guess" id="compGuessContainer">HIT</div>
+        <div className="guess" id="myGuessContainer">MISS</div> */}
+        <h3 id="myBoard">MY BOARD</h3>
+        <h3 id="compBoard">COMPUTER BOARD</h3>
         <Grid board="player" display={{display: "inline-block", position: "relative", left: "50px"}}/>
-        <button id="compShipsButton" style={{margin: "15px", padding: "20px", paddingTop: "20px", textAlign: "center", position: "relative", right: "565px", top: "100px"}} onClick={this.handleClick}>Set Opponent's Ships</button>
+        <button id="compShipsButton" onClick={this.handleClick}>Set Opponent's Ships</button>
         <Grid board="computer" display={{position: "relative", left: "500px", bottom: "600px"}}/>
       </>
     )
