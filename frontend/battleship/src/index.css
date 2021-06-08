@@ -25,7 +25,7 @@ code {
   padding: 40px;
 }
 
-/* .guess{
+.guess{
   position: absolute; 
   top: 405px;
   background-color: white;
@@ -44,7 +44,7 @@ code {
 
 #myGuessContainer {
   left: 884px;
-} */
+}
 
 #compShipsButton {
   margin: 15px;
