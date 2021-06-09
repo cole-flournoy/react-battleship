@@ -32,14 +32,28 @@ class Cell extends Component {
     } else {
       if (this.props.compShips.length !== 0 && this.props.myShips.length === 17){
         if (this.props.iHaveGuessed.filter(p => p === this.props.position).length === 0){
+          let guessBox = document.getElementById("myGuessContainer")
           if (this.props.compShips.find(p => p === this.props.position)){
             this.setState({cellColor: "red"})
             this.props.addMyHit(this.props.position)
-            this.isGameOver()
-            this.computerGuess()
+            guessBox.innerText = "HIT"
+            guessBox.style.display = "block"
+            setTimeout(() => {
+              guessBox.innerText = ""
+              guessBox.style.display = "none"
+              this.isGameOver()
+              this.computerGuess()
+            }, 1000)
+
           } else {
             this.setState({cellColor: "white"})
-            this.computerGuess()
+            guessBox.innerText = "MISS"
+            guessBox.style.display = "block"
+            setTimeout(() => {
+              guessBox.innerText = ""
+              guessBox.style.display = "none"
+              this.computerGuess()
+            }, 1000)
           }
           this.props.addMyGuess(this.props.position)
         }
@@ -106,6 +120,7 @@ class Cell extends Component {
     if (this.props.myShips.find(e => e === guess)){
       cell.style.backgroundColor = "red"
       this.props.addCompHit(guess) 
+      
       this.isGameOver()
     } else {
       cell.style.backgroundColor = "white"

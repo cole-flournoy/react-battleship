@@ -40,10 +40,12 @@ code {
  
 #compGuessContainer {
   left: 247px;
+  display: none;
 }
 
 #myGuessContainer {
   left: 884px;
+  display: none;
 }
 
 #compShipsButton {

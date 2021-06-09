@@ -186,8 +186,8 @@ class Game extends Component {
     return(
       <>
         <strong><div id="gameOverContainer"></div></strong>
-        <div className="guess" id="compGuessContainer">HIT</div>
-        <div className="guess" id="myGuessContainer">MISS</div>
+        <div className="guess" id="compGuessContainer"></div>
+        <div className="guess" id="myGuessContainer"></div>
         <h3 id="myBoard">MY BOARD</h3>
         <h3 id="compBoard">COMPUTER BOARD</h3>
         <Grid board="player" display={{display: "inline-block", position: "relative", left: "50px"}}/>
