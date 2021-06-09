@@ -33,6 +33,7 @@ code {
   height: 40px;  
   padding: 30px;
   border: solid;
+  opacity: 0;
   text-align: center;
   font-size: 25px;
   z-index: 1;

@@ -38,21 +38,25 @@ class Cell extends Component {
             this.props.addMyHit(this.props.position)
             guessBox.innerText = "HIT"
             guessBox.style.display = "block"
+            guessBox.style.opacity = 1
             setTimeout(() => {
-              guessBox.innerText = ""
-              guessBox.style.display = "none"
+              guessBox.style.transition = "1.0s"
+              guessBox.style.opacity = 0
               this.isGameOver()
               this.computerGuess()
+              setTimeout(() => {guessBox.style.display = "none"}, 1000)
             }, 1000)
 
           } else {
             this.setState({cellColor: "white"})
             guessBox.innerText = "MISS"
             guessBox.style.display = "block"
+            guessBox.style.opacity = 1
             setTimeout(() => {
-              guessBox.innerText = ""
-              guessBox.style.display = "none"
+              guessBox.style.transition = "1.0s"
+              guessBox.style.opacity = 0
               this.computerGuess()
+              setTimeout(() => {guessBox.style.display = "none"}, 1000)
             }, 1000)
           }
           this.props.addMyGuess(this.props.position)
@@ -123,18 +127,22 @@ class Cell extends Component {
       this.props.addCompHit(guess) 
       guessBox.innerText = "HIT"
       guessBox.style.display = "block"
+      guessBox.style.opacity = 1
       setTimeout(() => {
-        guessBox.innerText = ""
-        guessBox.style.display = "none"
+        guessBox.style.transition = "1.0s"
+        guessBox.style.opacity = 0
         this.isGameOver()
+        setTimeout(() => {guessBox.style.display = "none"}, 1000)
       }, 1000)
     } else {
       cell.style.backgroundColor = "white"
       guessBox.innerText = "MISS"
       guessBox.style.display = "block"
+      guessBox.style.opacity = 1
       setTimeout(() => {
-        guessBox.innerText = ""
-        guessBox.style.display = "none"
+        guessBox.style.transition = "1.0s"
+        guessBox.style.opacity = 0
+        setTimeout(() => {guessBox.style.display = "none"}, 1000)
       }, 1000)
     }
   }
