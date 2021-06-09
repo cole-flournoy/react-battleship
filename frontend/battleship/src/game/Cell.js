@@ -32,7 +32,7 @@ class Cell extends Component {
     } else {
       if (this.props.compShips.length !== 0 && this.props.myShips.length === 17){
         if (this.props.iHaveGuessed.filter(p => p === this.props.position).length === 0){
-          let guessBox = document.getElementById("myGuessContainer")
+          const guessBox = document.getElementById("myGuessContainer")
           if (this.props.compShips.find(p => p === this.props.position)){
             this.setState({cellColor: "red"})
             this.props.addMyHit(this.props.position)
@@ -84,7 +84,7 @@ class Cell extends Component {
 
   isGameOver = () => {
     if (this.props.compHits.length +1 === 17 || this.props.myHits.length +1 === 17){
-      let div = document.getElementById("gameOverContainer")
+      const div = document.getElementById("gameOverContainer")
       if (this.props.compHits.length +1 === 17){
         let game = {
           win: false, 
@@ -117,13 +117,25 @@ class Cell extends Component {
     const guess = options[randomIndex]
     const cell = document.getElementById(`${guess}`)
     this.props.addGuess(guess) 
+    const guessBox = document.getElementById("compGuessContainer")
     if (this.props.myShips.find(e => e === guess)){
       cell.style.backgroundColor = "red"
       this.props.addCompHit(guess) 
-      
-      this.isGameOver()
+      guessBox.innerText = "HIT"
+      guessBox.style.display = "block"
+      setTimeout(() => {
+        guessBox.innerText = ""
+        guessBox.style.display = "none"
+        this.isGameOver()
+      }, 1000)
     } else {
       cell.style.backgroundColor = "white"
+      guessBox.innerText = "MISS"
+      guessBox.style.display = "block"
+      setTimeout(() => {
+        guessBox.innerText = ""
+        guessBox.style.display = "none"
+      }, 1000)
     }
   }
 
