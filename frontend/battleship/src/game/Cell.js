@@ -42,9 +42,11 @@ class Cell extends Component {
             setTimeout(() => {
               guessBox.style.transition = "1.0s"
               guessBox.style.opacity = 0
-              this.isGameOver()
               this.computerGuess()
-              setTimeout(() => {guessBox.style.display = "none"}, 1000)
+              setTimeout(() => {
+                guessBox.style.display = "none"
+                this.isGameOver()
+              }, 1000)
             }, 1000)
 
           } else {
@@ -87,9 +89,10 @@ class Cell extends Component {
   }
 
   isGameOver = () => {
-    if (this.props.compHits.length +1 === 17 || this.props.myHits.length +1 === 17){
+    if (this.props.compHits.length === 17 || this.props.myHits.length === 17){
       const div = document.getElementById("gameOverContainer")
-      if (this.props.compHits.length +1 === 17){
+      debugger
+      if (this.props.compHits.length === 17){
         let game = {
           win: false, 
           accuracy: (this.props.compHits.length / this.props.compHasGuessed.length)*100,
@@ -97,10 +100,10 @@ class Cell extends Component {
         } 
         if (game.user_id !== null){this.addGame(game)}
         document.body.style.backgroundColor = "orangered"
-        div.style.display = ""
+        div.style.display = "block"
         div.innerText = "GAME OVER \n You Lost"
 
-      } else if (this.props.myHits.length +1 === 17){
+      } else if (this.props.myHits.length === 17){
         let game = {
           win: true, 
           accuracy: (this.props.myHits.length / this.props.iHaveGuessed.length)*100,
@@ -108,10 +111,10 @@ class Cell extends Component {
         }
         if (game.user_id !== null){this.addGame(game)}
         document.body.style.backgroundColor = "green"
-        div.style.display = ""
+        div.style.display = "block"
         div.innerText = "GAME OVER \n You WON!"
       }
-      setTimeout(() => this.props.history.push('/leaderboard'), 4000)
+      setTimeout(() => this.props.history.push('/leaderboard'), 5000)
     }
   }
 
@@ -131,8 +134,10 @@ class Cell extends Component {
       setTimeout(() => {
         guessBox.style.transition = "1.0s"
         guessBox.style.opacity = 0
-        this.isGameOver()
-        setTimeout(() => {guessBox.style.display = "none"}, 1000)
+        setTimeout(() => {
+          guessBox.style.display = "none"
+          this.isGameOver()
+        }, 1000)
       }, 1000)
     } else {
       cell.style.backgroundColor = "white"
@@ -145,6 +150,10 @@ class Cell extends Component {
         setTimeout(() => {guessBox.style.display = "none"}, 1000)
       }, 1000)
     }
+  }
+
+  betterComputerGuess = () => {
+    
   }
 
   setColor = () => {
